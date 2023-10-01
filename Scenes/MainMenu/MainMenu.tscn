@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7abbputfs1no"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu/scripts/MenuConfig.gd" id="1_v0q4w"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/scripts/MenuConfig.gd" id="1_js2ow"]
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -22,4 +22,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "SPIEL STARTEN"
 alignment = 0
-script = ExtResource("1_v0q4w")
+script = ExtResource("1_js2ow")

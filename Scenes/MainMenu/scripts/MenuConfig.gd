@@ -19,5 +19,5 @@ func _process(delta):
 	pass
 	
 func _startGame(id):
-	
-	print("Hi "+ str(id))
+	GameState.SetGameDifficulty(id)
+	GameState.SetGameState(Enums.GAME_STATE.PLAYING)
