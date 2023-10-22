@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj48iefu4y3kc"]
+[gd_scene load_steps=2 format=3 uid="uid://j5jkxhr5o5sd"]
 
-[ext_resource type="Script" path="res://Scenes/Pause/scripts/Pause.gd" id="1_74xjn"]
+[ext_resource type="Script" path="res://Scenes/GameOver/GameOver.gd" id="1_c7fgf"]
 
-[node name="Pause" type="CanvasLayer"]
-script = ExtResource("1_74xjn")
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_c7fgf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -11,19 +11,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.619608, 0.780392, 0.34902)
+color = Color(1, 0.156863, 0.403922, 0.34902)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -585.0
+offset_top = 55.0
+offset_right = 146.0
+offset_bottom = 237.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "DONT EAT YOURSELF!
+it's not worth it ~~~>:"
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -580.0
-offset_top = 55.0
-offset_right = -333.0
-offset_bottom = 146.0
+offset_left = 220.0
+offset_top = 560.0
+offset_right = 600.0
+offset_bottom = 720.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
-text = "PAUSED"
+text = "Final Score: 
+"
+autowrap_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -38,23 +53,20 @@ offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../MainMenuButton")
 theme_override_font_sizes/font_size = 52
-text = "RESUME"
+text = "RESTART"
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../ResumeButton")
 theme_override_font_sizes/font_size = 52
 text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../ResumeButton")
 theme_override_font_sizes/font_size = 52
 text = "QUIT"
