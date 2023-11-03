@@ -1,6 +1,7 @@
 extends Node
 class_name VectorUtils
 
+# Maps a direction Enum to a directional vector
 static func direction_to_vector(direction: Enums.DIRECTION) -> Vector2:
 	match direction:
 		Enums.DIRECTION.DOWN:

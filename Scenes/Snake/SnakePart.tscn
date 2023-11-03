@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv141x8ds7se8"]
 
-[ext_resource type="Script" path="res://Scenes/Snake/scripts/SnakePart.gd" id="1_ak5cm"]
+[ext_resource type="Script" path="res://Scenes/Snake/SnakePart.gd" id="1_ak5cm"]
 [ext_resource type="Texture2D" uid="uid://riua6e464d2f" path="res://Assets/snakeSpriteSheet.png" id="2_3pvlc"]
 
 [node name="SnakePart" type="Node2D"]

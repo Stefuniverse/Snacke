@@ -3,8 +3,7 @@ class_name PlayingField extends Node2D
 @export var initial_snake_length : int = 3
 @onready var tile_map: TileMap = $TileMap
 
-var tile_size: Vector2:
-	get = get_tile_size
+var tile_size: Vector2
 var field_tile_extents: Rect2
 var snake: Snake
 
@@ -53,8 +52,7 @@ func _toggle_pause_screen(paused: bool) -> void:
 		$Pause.visible = false
 
 # Calculates the extents of the playing field
-# with the tilemap which represents the playing field
-# in the game scene
+# with the tilemap which represents the playing field in the game scene
 func _calculate_field_tile_extents(map: TileMap) -> Rect2:
 	var rect: Rect2i = map.get_used_rect()
 	
@@ -71,7 +69,6 @@ func _calculate_field_tile_extents(map: TileMap) -> Rect2:
 func get_tile_size() -> Vector2:
 	return tile_size
 
-# Returns the local position of a random tile on the tile map
 func get_random_tile_position(map: TileMap, spawn_edge_margin: int) -> Vector2:
 	var rect: Rect2i = map.get_used_rect()
 	

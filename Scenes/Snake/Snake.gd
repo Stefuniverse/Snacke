@@ -16,6 +16,8 @@ func _init(part_count: int, spawn_direction: Vector2, pos: Vector2, env: Playing
 	Signals.new_move.connect(move_snake)
 	Signals.item_consumed.connect(attach_snake_part)
 
+# Calculates the displacement of the snake for the direction given in this turn
+# and calls the move method of the snakes head
 func move_snake(dir: Enums.DIRECTION) -> void:
 	if snake_parts.size() <= 0 || is_dead:
 		return
@@ -45,12 +47,12 @@ func move_snake(dir: Enums.DIRECTION) -> void:
 func check_collisions(snake_head: Node2D) -> void:
 	for snake_part in snake_parts:
 		if snake_part != snake_head && snake_part.global_position == snake_head.global_position:
-			fatality()
+			die()
 	for consumable in get_tree().get_nodes_in_group("consumable"):
 		if snake_head.global_position == consumable.global_position:
 			consumable.consume()
 
-func fatality() -> void:
+func die() -> void:
 	is_dead = true
 	var timer: Timer = Timer.new()
 	add_child(timer)
@@ -63,10 +65,10 @@ func spawn_snake(part_count: int, initial_direction: Vector2 = Vector2(-1,0)) ->
 		attach_snake_part("", 0, initial_direction)
 
 # Attaches a new part to the snake in opposite to the initial movement direction
-# or, per default, at the end of the snake and opposite to the last moved in direction of the last
-# snake part
+# or, per default, at the end of the snake and opposite to the direction the last
+# snake part moved towards in the last turn
 func attach_snake_part(_item_type: String = "", _item_value: int = 0,
- initial_direction: Vector2 = Vector2(0,0)) -> void:
+	 initial_direction: Vector2 = Vector2(0,0)) -> void:
 	var snake_part: Node2D = SnakePart.instantiate()
 	var tile_size: Vector2 = environment.tile_map.tile_set.tile_size as Vector2
 	add_child(snake_part)

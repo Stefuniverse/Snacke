@@ -12,7 +12,6 @@ func _ready():
 	
 	self.get_popup().id_pressed.connect(self._start_game)
 	self.grab_focus()
-	pass # Replace with function body.
 
 	
 func _start_game(id):

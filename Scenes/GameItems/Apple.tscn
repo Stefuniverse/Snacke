@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://br35ri05ycuqc"]
 
-[ext_resource type="Script" path="res://Scenes/GameItems/scripts/Apple.gd" id="1_a0jvh"]
+[ext_resource type="Script" path="res://Scenes/GameItems/Apple.gd" id="1_a0jvh"]
 [ext_resource type="Texture2D" uid="uid://d3kcbqmjabigd" path="res://Assets/apple.png" id="1_ghfsx"]
 
 [node name="Apple" type="Node2D"]

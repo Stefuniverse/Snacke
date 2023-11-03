@@ -2,23 +2,17 @@ extends Node
 
 const Enums = preload("res://Utils/enums.gd")
 
-var _difficulty : int = Enums.GAME_DIFFICULTY.EASY :
-	set = set_game_difficulty,
-	get = get_game_difficulty
-var _state : int = Enums.GAME_STATE.MENU :
-	set = set_game_state,
-	get = get_game_state
-var _last_pressed_direction : int = Enums.DIRECTION.LEFT :
-	set = set_last_pressed_direction,
-	get = get_last_pressed_direction
+var _difficulty : int = Enums.GAME_DIFFICULTY.EASY
+var _state : int = Enums.GAME_STATE.MENU
+
+var _last_pressed_direction : int = Enums.DIRECTION.LEFT
 var _last_move : int = Enums.DIRECTION.LEFT
 var _time_since_last_move : float = 0.0
 var _last_input_action : String
+
 var _paused: bool = false
 
-var score: int = 0 :
-	set = set_score,
-	get = get_score
+var score: int = 0
 
 var _current_scene_file: String = ""
 
@@ -43,14 +37,14 @@ func _process(delta: float) -> void:
 		_last_move = _last_pressed_direction
 		Signals.new_move.emit(_last_pressed_direction)
 	
-	# Snake goes faster if same direction input is held
-	elif _time_since_last_move > 0.5/move_frequency && \
-	_last_input_action != "" && \
-	 action_to_direction(_last_input_action) == _last_move && \
-	 Input.is_action_pressed(_last_input_action):
-		_time_since_last_move = 0
-		_last_move = _last_pressed_direction
-		Signals.new_move.emit(_last_pressed_direction)
+	# Snake goes faster if same direction input keeps being pressed
+	elif (_time_since_last_move > (0.5/move_frequency) && 
+		_last_input_action != "" &&
+	 	action_to_direction(_last_input_action) == _last_move &&
+	 	Input.is_action_pressed(_last_input_action)):
+			_time_since_last_move = 0
+			_last_move = _last_pressed_direction
+			Signals.new_move.emit(_last_pressed_direction)
 
 func _input(event):
 	if event.is_action_pressed("down") && _last_move != Enums.DIRECTION.UP:
